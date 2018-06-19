@@ -1,0 +1,18 @@
+{
+  "_id":{"$oid":"5b24df18d0b7e3175c9f14c1"},
+  "username":"admin",
+  "password":"123",
+  "id_type":{}
+}
+{
+  "_id":{"$oid":"5b24df18d0b7e3175c9f14c1"},
+  "username":"nanjo",
+  "password":"blackbullet",
+  "id_type":{}
+}
+{
+  "_id":{"$oid":"5b24df18d0b7e3175c9f14c1"},
+  "username":"paulf",
+  "password":"123",
+  "id_type":{}
+}

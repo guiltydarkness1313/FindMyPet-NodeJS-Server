@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
+let noticia= require('./models/user');
 const path= require('path');
 const cors = require('cors');
-const socketio = require('socket.io');
 const http = require('http');
 
 /*const indexRoutes= require('./routes/index');*/

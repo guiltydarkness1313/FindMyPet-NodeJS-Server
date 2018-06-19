@@ -1,0 +1,80 @@
+//json para usuarios
+    {
+      "_id":{"$oid":"5b24df18d0b7e3175c9f14c1"},
+      "username":"admin",
+      "password":"123",
+      "id_type":{}
+    }
+    {
+      "_id":{"$oid":"5b24df18d0b7e3175c9f14c1"},
+      "username":"nanjo",
+      "password":"blackbullet",
+      "id_type":{}
+    }
+    {
+      "_id":{"$oid":"5b24df18d0b7e3175c9f14c1"},
+      "username":"paulf",
+      "password":"123",
+      "id_type":{}
+    }
+    //json para tipo de usuarios
+    {
+      "_id":{"$oid":"5b24df18d0b7e3175c9f14c1"},
+      "name":"administrator"
+    }
+    {
+      "_id":{"$oid":"5b24df18d0b7e3175c9f14c1"},
+      "name":"basic user"
+    }
+    //json para Owner
+    {
+      "_id":{},
+      "name":"Nanjo",
+      "lastname":"Yoshino",
+      "birthdate":"13/07/1984",
+      "telephone":"984458111",
+      "address":"Tokyo",
+      "pets":{
+
+      }
+    }
+    {
+      "_id":{},
+      "name":"Paul",
+      "lastname":"Pacheco",
+      "birthdate":"13/01/1997",
+      "telephone":"999788222",
+      "pets":{
+
+      }
+    }
+    //json para mascotas//debe colocar el id de la raza
+    {
+      "_id":{},
+      "name":"Poseidon",
+      "breed_id":{},
+      "gender":"male",
+      "image":"",
+      "owner_id":{}
+    }
+    {
+      "_id":{},
+      "name":"Hikari",
+      "breed_id":{},
+      "gender":"female",
+      "image":"",
+      "owner_id":{}
+    }
+    //json para case//debe colocarse el id del owner pet
+    {
+      "_id":{},
+      "title":"Se me perdio mi perro! esta cieguito!!",
+      "latitude":"",
+      "longitude":"",
+      "date":"16/06/2018",
+      "isLost":true,
+      "description":"se perdio el dia sabado de ssasssaasss",
+      "user_id":{},
+      "pet_id":{}
+    }
+    //json para comparar las estadisticas de la imagen de la foto de la persona

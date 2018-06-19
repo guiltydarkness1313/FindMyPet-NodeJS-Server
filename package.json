@@ -1,6 +1,6 @@
 {
-  "name": "MEAN-APP",
-  "version": "1.0.0",
+  "name": "WebServiceXpress-FindMyPet",
+  "version": "0.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,14 +8,20 @@
     "dev": "nodemon src/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Paul Frank Pacheco Carpio",
   "license": "ISC",
   "dependencies": {
+    "http-errors": "^1.6.3",
+    "morgan": "^1.9.0",
+    "debug": "^3.1.0",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "mongojs": "^2.5.0",
     "pug": "^2.0.3",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.1.1",
+    "mongoose": "^5.1.5"
   },
   "devDependencies": {
     "nodemon": "^1.17.4"
