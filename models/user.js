@@ -1,5 +1,18 @@
+const multer = require('multer');
 let mongoose = require('mongoose');
+var Storage = multer.diskStorage({
+    destination: function (req,file,callback) {
+        callback(null,"./Images");
+    },
+    filename:function (req,file,callback) {
+        callback(null,file.filename+"_"+Date.now()+"_"+file.originalname
+        );
+    }
+});
+var upload =multer({
+    storage:Storage}).array("imgUploader",3); //Field name and max count
 Schema = mongoose.Schema;
+
 mongoose.connect('mongodb://localhost/findMyPet');
 var pet_schema=new Schema({
     name:String,
