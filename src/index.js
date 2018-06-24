@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('express');
 const app = express();
 let noticia= require('./models/user');
 const path= require('path');
@@ -10,6 +11,7 @@ const taskRoutes= require('./routes/task');
 const petRoutes = require('./routes/pet');
 
 //settings
+app.use(bodyParser.json());
 app.set('views',path.join(__dirname,'views'));
 app.set('port', process.env.PORT || 3000);
 app.engine('html', require('pug').renderFile);
