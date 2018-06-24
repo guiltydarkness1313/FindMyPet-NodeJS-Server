@@ -34,7 +34,5 @@ app.listen(app.get('port'), ()=>{
 
 //Attach Socket.io
 var server = http.createServer(app);
-var io = socketio.listen(server);
-app.set('socketio',io);
 app.set('server',server);
 
