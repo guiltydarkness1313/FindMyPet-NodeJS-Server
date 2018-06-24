@@ -1,19 +1,24 @@
-const multer = require('multer');
 let mongoose = require('mongoose');
-var Storage = multer.diskStorage({
-    destination: function (req,file,callback) {
-        callback(null,"./Images");
-    },
-    filename:function (req,file,callback) {
-        callback(null,file.filename+"_"+Date.now()+"_"+file.originalname
-        );
-    }
+var fs = require('fs');
+var visualRecognitionV3= require('watson-developer-cloud/visual-recognition/v3');
+
+//methods and declaration of variables
+const visualRecognition = new visualRecognitionV3({
+    url:"https://gateway.watsonplatform.net/visual-recognition/api",
+    version:"2018-03-19",
+    iam_apikey:"CW6jebGQ1VHaE7kIdVBQMn72YztGdKC2cJz31WUDWiLv",
 });
-var upload =multer({
-    storage:Storage}).array("imgUploader",3); //Field name and max count
+//declaration of mongoose Schema
 Schema = mongoose.Schema;
 
+//connect to the database
 mongoose.connect('mongodb://localhost/findMyPet');
+
+//declaration of models for mongodb Schema
+var breed_schema=new Schema({
+   name:String
+});
+
 var pet_schema=new Schema({
     name:String,
     breed_id:{type:mongoose.Schema.Types.ObjectId, ref:'breeds'},
@@ -47,9 +52,54 @@ var user_schema=new Schema({
     password:String,
     user_type:{type:mongoose.Schema.Types.ObjectId,ref:'userType'}
 });
+breed_model=mongoose.model('breed',breed_schema,'breed');
 user_model=mongoose.model('user',user_schema,'users');
 owner_model=mongoose.model('owner',owner_schema,'owners');
 module.exports={
+    upload_analyze:(req,res)=>{
+        var image = req.file.path;
+        var dir="http://localhost:3000/";
+        console.log(image);
+        var imageDir=dir+image;
+        var images_file=fs.createReadStream(imageDir);
+        var classfier_ids=["default"];
+        var threshold=0.6;
+        var params={
+            images_file:images_file,
+            classfier_ids:classfier_ids,
+            threshold:threshold
+        };
+        visualRecognition.classify(params,function (error,res) {
+            if(error){
+                console.log(error);
+            }else{
+                var result=JSON.stringify(res,null,2);
+                console.log(result);
+                res.render('image',result);
+            }
+        });
+        //res.render('',{data:})
+    },
+    list_breed:(req,res)=>{
+
+    },
+    recognition:(req,res)=>{
+        var images_file=fs.createReadStream('./public/images/dog_example_retriever.jpg');
+        var classifier_ids=["default"];
+        var threshold=0.6;
+        var params={
+            images_file:images_file,
+            classifier_ids:classifier_ids,
+            threshold:threshold
+        };
+        visualRecognition.classify(params,function (error,res) {
+            if(error){
+                console.log(error)
+            } else{
+                console.log(JSON.stringify(res,null,2));
+            }
+        });
+    },
     createUser:(req,res)=>{
       if(req.body.username && req.body.password){
           let user={
